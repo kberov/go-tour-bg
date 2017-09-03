@@ -1,19 +1,19 @@
-A Tour of Go is an introduction to the Go programming language.
+Разходка в Go е въведение в езика за програмиране Go.
 
-The easiest way to install the tour locally is to install
-[a binary release of Go](https://golang.org/dl/) and then run:
+Най-лесният начин да инсталирате обиколката на вашия компютър е като инсталирате
+[прекомпилирано издание на Go](https://golang.org/dl/) и после изпълните на командния ред:
 
 	$ go tool tour
 
-To install the tour from source, first 
-[set up a workspace](https://golang.org/doc/code.html) and then run:
+За да инсталирате разходката от изходния код, първо
+[настройте работната си среда](https://golang.org/doc/code.html) и след това изпълнете:
 
 	$ go get golang.org/x/tour/gotour
 
-This will place a `gotour` binary in your workspace's `bin` directory.
+Това ще създаде изпълним файл `gotour` в папката `bin` на вашето работно пространство.
 
-Unless otherwise noted, the go-tour source files are distributed
-under the BSD-style license found in the LICENSE file.
+Ако не е упоменато друго, изходният код  се разпространява под лиценз в стил BSD,
+който може да бъде намерен във файла LICENSE.
 
-Contributions should follow the same procedure as for the Go project:
+Ако решите да допринесете, следвайте същите указания като в проекта Go:
 http://golang.org/doc/contribute.html

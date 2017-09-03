@@ -1,34 +1,33 @@
-Welcome!
-Learn how to use this tour: including how to navigate the different lessons and how to run code.
+Добре дошли!
+Научете се как да се възползвате от обиколката. Това включва как да се придвижвате между отделните уроци и как да изпълнявате програмен код. 
 
-The Go Authors
+Авторите на Go
 https://golang.org
 
-* Hello, 世界
+* Здравей, Свят
 
-Welcome to a tour of the [[https://golang.org/][Go programming language]].
+Добре дошли на разходката в [[https://golang.org/][езика за програмиране Go]].
 
-The tour is divided into a list of modules that you can
-access by clicking on
-[[javascript:highlight(".logo")][A Tour of Go]] on the top left of the page.
+Обиколката е разделена на списък с модули, които можете да достъпите като щракнете на
+[[javascript:highlight(".logo")][Разходка в Go]] в горния ляв ъгъл на страницата.
 
-You can also view the table of contents at any time by clicking on the [[javascript:highlightAndClick(".nav")][menu]] on the top right of the page.
+Можете да разглеждате страницата със съдържанието по всяко време като щракнете на
+[[javascript:highlightAndClick(".nav")][менюто]] в горния десен ъгъл на страницата.
 
-Throughout the tour you will find a series of slides and exercises for you
-to complete.
+В разходката ще намерите поредица от страници и упражнения, които трябва да направите.
 
-You can navigate through them using
+Можете да преминавате през тях като използвате бутоните
 
-- [[javascript:highlight(".prev-page")]["previous"]] or `PageUp` to go to the previous page,
+- [[javascript:highlight(".prev-page")][<]] или `PageUp`, за да отидете на предишната страница,
 
-- [[javascript:highlight(".next-page")]["next"]] or `PageDown` to go to the next page.
+- [[javascript:highlight(".next-page")][>]] или `PageDown`, за да отидете на следващата страница.
 
-The tour is interactive. Click the
-[[javascript:highlightAndClick("#run")][Run]] button now 
-(or type `shift-enter`) to compile and run the program on
-#appengine: a remote server.
-your computer.
-The result is displayed below the code.
+Можете да изпълнявате програмния код. Натиснете бутона
+[[javascript:highlightAndClick("#run")][Изпълни]] или натиснете 
+(or type `shift-enter`), за да компилирате и изпълните програмата на
+#appengine: отдалечения сървър.
+вашия компютър.
+Изходът се показва под програмния код.
 
 These example programs demonstrate different aspects of Go. The programs in the tour are meant to be starting points for your own experimentation.
 
@@ -106,9 +105,10 @@ Click the [[javascript:highlightAndClick(".next-page")]["next"]] button or type 
 #appengine: 
 #appengine: .play welcome/sandbox.go
 
-* Congratulations
+* Поздравления
 
-You've finished the first module of the tour!
+Завършихте първата част от обиколката!
 
-Now click on [[javascript:highlightAndClick(".logo")][A Tour of Go]] to find out what else
-you can learn about Go, or go directly to the [[javascript:click('.next-page')][next lesson]].
+Сега натиснете върху [[javascript:highlightAndClick(".logo")][Разходка в Go]], за да разберете
+какво друго можете да научите за Go,
+или отидете направо на [[javascript:click('.next-page')][следващия урок]].

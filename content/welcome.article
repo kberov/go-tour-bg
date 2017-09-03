@@ -29,66 +29,68 @@ https://golang.org
 вашия компютър.
 Изходът се показва под програмния код.
 
-These example programs demonstrate different aspects of Go. The programs in the tour are meant to be starting points for your own experimentation.
+Тези примерни програми показват различни страни на езика Go. Те са предназначени да послужат като начало на вашия опит с езика.
 
-Edit the program and run it again.
+Променете програмата и я изпълнете отново.
 
-Note that when you click on [[javascript:highlightAndClick("#format")][Format]] or `ctrl-enter`
-the text in the editor is formatted using the
-[[https://golang.org/cmd/gofmt/][gofmt]] tool. You can switch syntax highlighting on and off
-by clicking on the [[javascript:highlightAndClick(".syntax-checkbox")][syntax]] button.
+Забележете, че когато щтракнете върху [[javascript:highlightAndClick("#format")][Format]]
+или натиснете `ctrl-enter` текстът в редактора се форматира с помощта на инструмента
+[[https://golang.org/cmd/gofmt/][gofmt]]. Можете да включвате и изключвате оцветяването
+на изходния код като натиснете бутона [[javascript:highlightAndClick(".syntax-checkbox")][синтаксис]].
 
-When you're ready to move on, click the [[javascript:highlightAndClick(".next-page")][right arrow]] below or type the `PageDown` key.
+Когато сте готови да продължите, натиснете
+[[javascript:highlightAndClick(".next-page")][стрелката надясно]]
+отдолу или натиснете клавиша `PageDown`.
 
 .play welcome/hello.go
 
-* Go local
+* Преведен Go
 
-The tour is available in other languages:
+Разходката е преведена и на други езици:
 
-- [[https://go-tour-br.appspot.com/][Brazilian Portuguese — Português do Brasil]]
-- [[https://go-tour-ca.appspot.com/][Catalan — Català]]
-- [[https://go-tour-de.appspot.com/][German — Deutsch]]
-- [[https://go-tour-es.appspot.com/][Spanish — Español]]
-- [[https://go-tour-fr.appspot.com/][French — Français]]
-- [[https://go-tour-id2.appspot.com/][Indonesia — Bahasa]]
-- [[https://go-tour-ita.appspot.com/][Italian — Italiano]]
-- [[https://go-tour-he.appspot.com/][Hebrew — עִבְרִית]]
-- [[https://go-tour-jp.appspot.com/][Japanese — 日本語]]
-- [[https://go-tour-kr.appspot.com/][Korean — 한국어]]
-- [[https://go-tour-ro.appspot.com/][Romanian — Română]]
-- [[https://tour.go-zh.org/][Simplified Chinese — 中文（简体）]]
-- [[https://go-tour-zh-tw.appspot.com/][Traditional Chinese — 中文（繁體）]]
-- [[https://go-tour-ua.appspot.com/][Ukrainian — Українська]]
-- [[https://go-tour-uz.appspot.com/][Uzbek — Ўзбекча]]
-- [[https://go-tour-turkish.appspot.com/][Turkish - Türkçe]]
-- [[https://go-tour-ru-ru.appspot.com/][Russian - Русский]]
+- [[https://go-tour-br.appspot.com/][бразилски португалски — Português do Brasil]]
+- [[https://go-tour-ca.appspot.com/][каталански — Català]]
+- [[https://go-tour-de.appspot.com/][немски — Deutsch]]
+- [[https://go-tour-es.appspot.com/][испански — Español]]
+- [[https://go-tour-fr.appspot.com/][френски — Français]]
+- [[https://go-tour-id2.appspot.com/][индонезийски — Bahasa]]
+- [[https://go-tour-ita.appspot.com/][италиански — Italiano]]
+- [[https://go-tour-he.appspot.com/][Иврит — עִבְרִית]]
+- [[https://go-tour-jp.appspot.com/][японски — 日本語]]
+- [[https://go-tour-kr.appspot.com/][корейски — 한국어]]
+- [[https://go-tour-ro.appspot.com/][румънски — Română]]
+- [[https://tour.go-zh.org/][опростен китайски — 中文（简体）]]
+- [[https://go-tour-zh-tw.appspot.com/][традиционен китайски — 中文（繁體）]]
+- [[https://go-tour-ua.appspot.com/][украински — Українська]]
+- [[https://go-tour-uz.appspot.com/][узбекски — Ўзбекча]]
+- [[https://go-tour-turkish.appspot.com/][турски - Türkçe]]
+- [[https://go-tour-ru-ru.appspot.com/][руски - Русский]]
 
-Click the [[javascript:highlightAndClick(".next-page")]["next"]] button or type `PageDown` to continue.
+Натиснете бутона [[javascript:highlightAndClick(".next-page")][>]] или клавиша `PageDown`, за да продължите.
 
-#appengine: * Go offline
+#appengine: * Go на вашия компютър
 #appengine: 
-#appengine: This tour is also available as a stand-alone program that you can use
-#appengine: without access to the internet.
+#appengine: Тази разходка е налична също като самостоятелна програма,
+#appengine: която можете да използвате без достъп до интернет.
 #appengine: 
-#appengine: The stand-alone tour is faster, as it builds and runs the code samples
-#appengine: on your own machine.
+#appengine: Самостоятелната обиколка е по-бърза, тъй като се изгражда и работи
+#appengine: на собствената ви машина.
 #appengine: 
-#appengine: To run the tour locally first
-#appengine: [[http://golang.org/dl/][download and install Go]]
-#appengine: then start the tour from the command line:
+#appengine: За да ползвате програмата на вашия компютър, първо
+#appengine: [[http://golang.org/dl/][свалете и инсталирайте Go]]
+#appengine: след това пуснете програмта от командния ред:
 #appengine: 
 #appengine: 	go tool tour
 #appengine: 
-#appengine: The tour program will open a web browser displaying
-#appengine: your local version of the tour.
+#appengine: Програмата ще отвори нов прозорец на уеб четеца ви
+#appengine: и ще покаже вашата версия на разходката.
 #appengine: 
-#appengine: Or, of course, you can continue to take the tour through this web site.
+#appengine: Можете да продължите разходката и на този сайт естествено.
 
-#appengine: * The Go Playground
+#appengine: * Игрището на Go
 #appengine: 
-#appengine: This tour is built atop the [[https://play.golang.org/][Go Playground]], a
-#appengine: web service that runs on [[https://golang.org/][golang.org]]'s servers.
+#appengine: Тази обиколка надгражда [[https://play.golang.org/][Игрището на Go]],
+#appengine: което е услуга работеща на сървърите на [[https://golang.org/][golang.org]].
 #appengine: 
 #appengine: The service receives a Go program, compiles, links, and runs the program inside
 #appengine: a sandbox, then returns the output.

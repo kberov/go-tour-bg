@@ -1,5 +1,5 @@
-Flow control statements: for, if, else, switch and defer
-Learn how to control the flow of your code with conditionals, loops, switches and defers.
+Изрази за управление: for, if, else, switch and defer
+Научете се да управлявате работата на програмата си с условни изрази, цикли, превключвания и отлагания.
 
 The Go Authors
 https://golang.org

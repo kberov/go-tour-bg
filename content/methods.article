@@ -1,15 +1,15 @@
-Methods and interfaces
-This lesson covers methods and interfaces, the constructs that define objects and their behavior.
+Методи и интерфейси
+В този урок научаваме за методите и интерфейсите, начините, чрез които създаваме обекти и задаваме тяхното поведение.
 
 The Go Authors
 https://golang.org
 
-* Methods
+* Методи
 
-Go does not have classes.
-However, you can define methods on types.
+Go няма класове.
+Въпреки това можете да задавате методи на типовете.
 
-A method is a function with a special _receiver_ argument.
+Методът е функция с допълнителен аргумент, наречен _получател_.
 
 The receiver appears in its own argument list between the `func` keyword and
 the method name.

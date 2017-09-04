@@ -1,5 +1,5 @@
-Concurrency
-Go provides concurrency constructions as part of the core language. This lessons presents them and gives some examples on how to use it.
+Едновременност
+Go предоставя възможност за едновременно изпълнение на код. Тази способност е заложена в ядрото на езика. Следващите уроци обясняват как се постига това и дават някои примери.
 
 The Go Authors
 https://golang.org

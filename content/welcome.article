@@ -8,7 +8,7 @@ https://golang.org
 
 Добре дошли на разходката в [[https://golang.org/][езика за програмиране Go]].
 
-Обиколката е разделена на списък с модули, които можете да достъпите като щракнете на
+Обиколката се състои от списък с раздели, които можете да достъпите като щракнете на
 [[javascript:highlight(".logo")][Разходка в Go]] в горния ляв ъгъл на страницата.
 
 Можете да разглеждате страницата със съдържанието по всяко време като щракнете на
@@ -92,18 +92,22 @@ https://golang.org
 #appengine: Тази обиколка надгражда [[https://play.golang.org/][Игрището на Go]],
 #appengine: което е услуга работеща на сървърите на [[https://golang.org/][golang.org]].
 #appengine: 
-#appengine: The service receives a Go program, compiles, links, and runs the program inside
-#appengine: a sandbox, then returns the output.
+#appengine: Услугата получава програма, написан на Go, компилира я, свързва я и я изпълнява
+#appengine: в т.нар. „пясъчна кутия“, след което връща изхода.
 #appengine: 
-#appengine: There are limitations to the programs that can be run in the playground: 
+#appengine: Има някои ограничения за програмите, когато се изпълняват на игрището:
 #appengine: 
-#appengine: - In the playground the time begins at 2009-11-10 23:00:00 UTC (determining the significance of this date is an exercise for the reader). This makes it easier to cache programs by giving them deterministic output.
+#appengine: - На игрището времето започва от 2009-11-10 23:00:00 UTC 
+#appengine: (определянето значението на тази дата е оставено на читателя).
+#appengine: Така е по-лесно кеширането на програмите, като изходът им е предопределен.
 #appengine: 
-#appengine: - There are also limits on execution time and on CPU and memory usage, and the program cannot access external network hosts. 
+#appengine: - Също така има ограничение на времето на изпълнение и използването на
+#appengine: процесора и паметта. Освен това програмата не може да достъпва външни хостове.
 #appengine: 
-#appengine: The playground uses the latest stable release of Go.
+#appengine: Игрището използва последната стабилна версия на Go.
 #appengine: 
-#appengine: Read "[[https://blog.golang.org/playground][Inside the Go Playground]]" to learn more.
+#appengine: Прочете "[[https://blog.golang.org/playground][Inside the Go Playground]]",
+#appengine: за да разберете повече.
 #appengine: 
 #appengine: .play welcome/sandbox.go
 

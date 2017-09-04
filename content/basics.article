@@ -1,12 +1,12 @@
-Packages, variables, and functions.
-Learn the basic components of any Go program.
+Пакети, променливи и функции.
+Научете oсновните съставни части на всяка програма на Go.
 
-The Go Authors
+Авторите на Go
 https://golang.org
 
-* Packages
+* Пакети
 
-Every Go program is made up of packages.
+Всяка програма на Go се състои от пакети.
 
 Programs start running in package `main`.
 
@@ -23,7 +23,7 @@ By convention, the package name is the same as the last element of the import pa
 
 .play basics/packages.go
 
-* Imports
+* Внасяне (Imports)
 
 This code groups the imports into a parenthesized, "factored" import statement.
 

@@ -9,50 +9,50 @@ angular.module('tour.values', []).
 // List of modules with description and lessons in it.
 value('tableOfContents', [{
     'id': 'mechanics',
-    'title': 'Using the tour',
-    'description': '<p>Welcome to a tour of the <a href="http://golang.org">Go programming language</a>. The tour covers the most important features of the language, mainly:</p>',
+    'title': 'Как да използваме разходката',
+    'description': '<p>Добре дошли на разходката в <a href="http://golang.org">езика за програмиране Go</a>. Разходката покрива най-важните възможности на езика, а именно:</p>',
     'lessons': ['welcome']
 }, {
     'id': 'basics',
-    'title': 'Basics',
-    'description': '<p>The starting point, learn all the basics of the language.</p><p>Declaring variables, calling functions, and all the things you need to know before moving to the next lessons.</p>',
+    'title': 'Основни положения',
+    'description': '<p>Започнете оттук. Научете основите на езика.</p><p>Обявяване на променливи, извикване на функции, и всичко останало, което ви е необходимо, преди да продължите със следващите уроци.</p>',
     'lessons': ['basics', 'flowcontrol', 'moretypes']
 }, {
     'id': 'methods',
-    'title': 'Methods and interfaces',
-    'description': '<p>Learn how to define methods on types, how to declare interfaces, and how to put everything together.</p>',
+    'title': 'Методи и интерфейси',
+    'description': '<p>Научете се как да създавате методи за дадени типове, как да обявявате начини за взаимодействие (интерфейси) и как да използвате всичко това.</p>',
     'lessons': ['methods']
 }, {
     'id': 'concurrency',
-    'title': 'Concurrency',
-    'description': '<p>Go provides concurrency features as part of the core language.</p><p>This module goes over goroutines and channels, and how they are used to implement different concurrency patterns.</p>',
+    'title': 'Едновременност (Concurrency)',
+    'description': '<p>Go предоставя възможност за едновременно изпълнение на код. Тази способност е заложена в ядрото на езика.</p><p>В този раздел разглеждаме go-подпрограмите (goroutines) и каналите (channels), и различни начини за осъществяване на едновременност.</p>',
     'lessons': ['concurrency']
 }]).
 
 // translation
 value('translation', {
-    'off': 'off',
-    'on': 'on',
-    'syntax': 'Syntax-Highlighting',
-    'lineno': 'Line-Numbers',
-    'reset': 'Reset Slide',
-    'format': 'Format Source Code',
-    'kill': 'Kill Program',
-    'run': 'Run',
-    'compile': 'Compile and Run',
-    'more': 'Options',
-    'toc': 'Table of Contents',
-    'prev': 'Previous',
-    'next': 'Next',
-    'waiting': 'Waiting for remote server...',
-    'errcomm': 'Error communicating with remote server.',
-    'submit-feedback': 'Send feedback about this page',
+    'off': 'вкл.',
+    'on': 'изкл.',
+    'syntax': 'Оцветяване на кода',
+    'lineno': 'номера на редовете',
+    'reset': 'опресняване на страницата',
+    'format': 'Форматиране на изходния код',
+    'kill': 'Убиване на програмата',
+    'run': 'Изпълнение',
+    'compile': 'Компилиране и изпълнение',
+    'more': 'Още възможности',
+    'toc': 'Съдържание',
+    'prev': 'Предишна',
+    'next': 'Следваща',
+    'waiting': 'Изчакване на отдалечения сървър...',
+    'errcomm': 'Грешка при общуването с отдалечения сървър.',
+    'submit-feedback': 'Изпратете отзиви за тази страница.',
 
     // GitHub issue template: update repo and messaging when translating.
-    'github-repo': 'github.com/golang/tour',
-    'issue-title': 'tour: [REPLACE WITH SHORT DESCRIPTION]',
-    'issue-message': 'Change the title above to describe your issue and add your feedback here, including code if necessary',
-    'context': 'Context',
+    'github-repo': 'github.com/kberov/go-tour-bg',
+    'issue-title': 'tour: [ЗАМЕСТЕТЕ С КРАТКО ОПИСАНИЕ]',
+    'issue-message': 'Променете заглавието горе, за да опишете проблема и добавите вашите забележки. Добавете програмен код ако е необходимо.',
+    'context': 'Контекст',
 }).
 
 // Config for codemirror plugin

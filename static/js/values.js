@@ -50,9 +50,9 @@ value('translation', {
 
     // GitHub issue template: update repo and messaging when translating.
     'github-repo': 'github.com/kberov/go-tour-bg',
-    'issue-title': 'tour: [ЗАМЕСТЕТЕ С КРАТКО ОПИСАНИЕ]',
+    'issue-title': 'разходка: [ЗАМЕСТЕТЕ С КРАТКО ОПИСАНИЕ]',
     'issue-message': 'Променете заглавието горе, за да опишете проблема и добавите вашите забележки. Добавете програмен код ако е необходимо.',
-    'context': 'Контекст',
+    'context': 'Адрес',
 }).
 
 // Config for codemirror plugin

@@ -8,52 +8,52 @@ https://golang.org
 
 Всяка програма на Go се състои от пакети.
 
-Programs start running in package `main`.
+Програмите започват изпълнението си в пакета `main`.
 
-This program is using the packages with import paths `"fmt"` and `"math/rand"`.
+Тази програма използва пакетите с пътища за внасяне `"fmt"` и `"math/rand"`.
 
-By convention, the package name is the same as the last element of the import path. For instance, the `"math/rand"` package comprises files that begin with the statement `package`rand`.
+Общоприето е името на пакета да е последният елемент от пътя за внасяне.
+Например пакетът `"math/rand"` съдържа файлове, започващи с израза `package`rand`.
 
-#appengine: *Note:* the environment in which these programs are executed is
-#appengine: deterministic, so each time you run the example program
-#appengine: `rand.Intn` will return the same number.
-#appengine:
-#appengine: (To see a different number, seed the number generator; see [[https://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].
-#appengine: Time is constant in the playground, so you will need to use something else as the seed.)
+*Забележка:* средата, в която се изпълняват програмите е предопределена
+(детерминистична), така че винаги, когато изпълнявате примерната програма,
+`rand.Intn` ще връща едно и също число.
+
+(За да видите различно число, захранете числовия генератор; вижте [[https://golang.org/pkg/math/rand/#Seed][`rand.Seed`]].
+(В игрището времето е непроменлива величина, така, че ще трябва да използвате нещо друго за захранване.)
 
 .play basics/packages.go
 
 * Внасяне (Imports)
 
-This code groups the imports into a parenthesized, "factored" import statement.
+Тази програма събира внасянията в едно като огражда пътищата в скоби.
 
-You can also write multiple import statements, like:
+Можете да пишете също отделни изрази за внасяне, ето така:
 
 	import "fmt"
 	import "math"
 
-But it is good style to use the factored import statement.
+Но по-добре е да се използва един израз със скоби.
 
 .play basics/imports.go
 
-* Exported names
+* Изнесени (exported) имена
 
-In Go, a name is exported if it begins with a capital letter.
-For example, `Pizza` is an exported name, as is `Pi`, which is exported from
-the `math` package.
+В Go дадено наименование е „изнесено“, когато започва с главна буква.
+`Pizza` например е изнесено, както и `Pi`, което е изнесено от пакета `math`.
 
-`pizza` and `pi` do not start with a capital letter, so they are not exported.
+`pizza` и `pi` не започват с главна буква – не са изнесени.
 
-When importing a package, you can refer only to its exported names.
-Any "unexported" names are not accessible from outside the package.
+Когато внасяме пакет, имаме достъп само до изнесените имена от него.
+Всяко „неизнесено“ име е недостъпно извън пакета.
 
-Run the code. Notice the error message.
+Изпълнете кода. Обърнете внимание на съобщението за грешка.
 
-To fix the error, rename `math.pi` to `math.Pi` and try it again.
+За да оправите грешката, преименувайте `math.pi` на `math.Pi` и опитайте отново.
 
 .play basics/exported-names.go
 
-* Functions
+* Функции
 
 A function can take zero or more arguments.
 

@@ -8,5 +8,5 @@ import (
 )
 
 func main() {
-	fmt.Println("Любимото ми число е ", rand.Intn(10))
+	fmt.Println("Любимото ми число е", rand.Intn(10))
 }

@@ -52,7 +52,7 @@ value('translation', {
     'github-repo': 'github.com/kberov/go-tour-bg',
     'issue-title': 'разходка: [ЗАМЕСТЕТЕ С КРАТКО ОПИСАНИЕ]',
     'issue-message': 'Променете заглавието горе, за да опишете проблема и добавите вашите забележки. Добавете програмен код ако е необходимо.',
-    'context': 'Адрес',
+    'context': 'Къде',
 }).
 
 // Config for codemirror plugin

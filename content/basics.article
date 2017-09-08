@@ -144,93 +144,94 @@ https://golang.org
 
 	complex64 complex128
 
-The example shows variables of several types,
-and also that variable declarations may be "factored" into blocks,
-as with import statements.
+Примерът показва няколко типа променливи както и възможността
+да се обединяват обявявания на променливи в блокове както е при твърденията за внасяне.
 
-The `int`, `uint`, and `uintptr` types are usually 32 bits wide on 32-bit systems and 64 bits wide on 64-bit systems.
-When you need an integer value you should use `int` unless you have a specific reason to use a sized or unsigned integer type.
+Типовете `int`, `uint`, and `uintptr` са ибикновенно 32-битови на 32-битови системи и 64-битови на 64-битови.
+Когато ви трябва целочислена стойност, използвайте `int`,
+освен ако нямате някаква особена причина да ползвате някакъв оразмерен тип
+(int8  int16  int32  int64) или тип без знак (uint).
 
 .play basics/basic-types.go
 
-* Zero values
+* Нулеви стойности
 
-Variables declared without an explicit initial value are given their
-_zero_value_.
+Обявените променливи без изрично присвоена стойност имат _нулева стойност_.
 
-The zero value is:
+Нулевата стойност е:
 
-- `0` for numeric types,
-- `false` for the boolean type, and
-- `""` (the empty string) for strings.
+- `0` за числови типове;
+- `false` за булевия тип;
+- `""` (празен низ) за низове.
 
 .play basics/zero.go
 
-* Type conversions
+* Превръщане на типове
 
-The expression `T(v)` converts the value `v` to the type `T`.
+Изразът `T(v)` превръща стойността `v` в типа `T`.
 
-Some numeric conversions:
+Някои числови превръщания:
 
 	var i int = 42
 	var f float64 = float64(i)
 	var u uint = uint(f)
 
-Or, put more simply:
+Или по-простичко:
 
 	i := 42
 	f := float64(i)
 	u := uint(f)
 
-Unlike in C, in Go assignment between items of different type requires an
-explicit conversion.
-Try removing the `float64` or `uint` conversions in the example and see what happens.
+За разлика от C, в Go присвояването на стойности от една променлива на друга с различен тип изисква изрично превръщане.
+Опитайте да премахнете `float64` или `uint` превръщанията и вижте какво се случва.
 
 .play basics/type-conversions.go
 
-* Type inference
+* Подразбиращи се типове
 
-When declaring a variable without specifying an explicit type (either by using the `:=` syntax or `var`=` expression syntax), the variable's type is inferred from the value on the right hand side.
+Когато обявявате променлива без да указвате изрично типа (като използвате правописа `:=` или `var`=` ), типът на променливата се подразбира от стойността от дясната страна на оператора за присвояване.
 
-When the right hand side of the declaration is typed, the new variable is of that same type:
+Когато стойността от дясната страна вече има тип, новата променлива приема същия тип:
 
 	var i int
 	j := i // j is an int
 
-But when the right hand side contains an untyped numeric constant, the new variable may be an `int`, `float64`, or `complex128` depending on the precision of the constant:
+В случай обаче, че стойността от дясната страна представлява някаква числова непроменлива стойност, 
+тогава променливата приема някой от типовете `int`, `float64`, или `complex128`
+в зависимост от точността на константата:
 
 	i := 42           // int
 	f := 3.142        // float64
 	g := 0.867 + 0.5i // complex128
 
-Try changing the initial value of `v` in the example code and observe how its type is affected.
+Променете началната стойност на `v` в примерния код и вижте как се променя типа ѝ.
 
 .play basics/type-inference.go
 
-* Constants
+* Непроменливи (константи)
 
-Constants are declared like variables, but with the `const` keyword.
+Непроменливите се обявяват като променливи, но се използва ключовата дума `const`.
 
-Constants can be character, string, boolean, or numeric values.
+Непроменливите могат да приемат знакови, низови, булеви или числови стойности.
 
-Constants cannot be declared using the `:=` syntax.
+Непроменливите не могат да бъдат обявявани с оператора `:=`.
 
 .play basics/constants.go
 
-* Numeric Constants
+* Числови непроменливи
 
-Numeric constants are high-precision _values_.
+Числовите непроменливи имат _стойности_ с висока точност.
 
-An untyped constant takes the type needed by its context.
+Непроменливата без тип приема типа, наложен от контекста.
 
-Try printing `needInt(Big)` too.
+Опитайте също да покажете на екрана `needInt(Big)`.
 
-(An `int` can store at maximum a 64-bit integer, and sometimes less.)
+(`int` може да съдържа най-много 64-битово цяло число, а понякога и по-малко.)
 
 .play basics/numeric-constants.go
 
-* Congratulations!
+* Поздравления!
 
-You finished this lesson!
+Завършихте този урок!
 
-You can go back to the list of [[/list][modules]] to find what to learn next, or continue with the [[javascript:click('.next-page')][next lesson]].
+Можете да отидете обратно в списъка с [[/list][разделите]] и да изберете какво да научите, или да продължите със [[javascript:click('.next-page')][следващия урок]].

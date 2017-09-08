@@ -4,9 +4,9 @@
 The Go Authors
 https://golang.org
 
-* For
+* For (За)
 
-Go has only one looping construct, the `for` loop.
+Go има само един начин за повторение на действия (цикъл). Това е цикълът `for`.
 
 The basic `for` loop has three components separated by semicolons:
 

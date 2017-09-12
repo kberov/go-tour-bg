@@ -6,42 +6,43 @@ https://golang.org
 
 * Указатели
 
-Go has pointers.
-A pointer holds the memory address of a value.
+Go има указатели.
+Указателят съдържа адрес на дадена стойност в паметта.
 
-The type `*T` is a pointer to a `T` value. Its zero value is `nil`.
+Типът `*T` е указател към стойност от тип `T`. Нулевата му стойност е `nil`.
 
 	var p *int
 
-The `&` operator generates a pointer to its operand.
+Операторът `&` създава указател към подадения му аргумент.
 
 	i := 42
 	p = &i
 
-The `*` operator denotes the pointer's underlying value.
+Операторът `*` означава стойността, към която сочи указателят.
 
-	fmt.Println(*p) // read i through the pointer p
-	*p = 21         // set i through the pointer p
+	fmt.Println(*p) // прочита се i чрез указателя p
+	*p = 21         // задава се i чрез указателя p
 
-This is known as "dereferencing" or "indirecting".
+Това е познато като „посочване“ или „опосредстване“.
 
-Unlike C, Go has no pointer arithmetic.
+
+За разлика от C, Go не поддържа аритметика с указатели.
 
 .play moretypes/pointers.go
 
-* Structs
+* Структури (от данни)
 
-A `struct` is a collection of fields.
+Структурата (`struct`) е набор от полета.
 
 .play moretypes/structs.go
 
-* Struct Fields
+* Полета в структурите
 
-Struct fields are accessed using a dot.
+Полетата в структурите се достъпват чрез точка.
 
 .play moretypes/struct-fields.go
 
-* Pointers to structs
+* Указатели към структури
 
 Struct fields can be accessed through a struct pointer.
 

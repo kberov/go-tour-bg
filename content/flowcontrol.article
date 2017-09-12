@@ -92,61 +92,58 @@ _Забележете_: За разлика от други езици като 
 
 * Switch (Превключване)
 
-Може би знаехте как ще изглежда `switch`.
+Може би знаехте как изглежда `switch`.
 
-A case body breaks automatically, unless it ends with a `fallthrough` statement.
+Тялото на случая (case) прекъсва автоматично, освен ако завършва с твърдение `fallthrough`.
 
 .play flowcontrol/switch.go
 
-* Switch evaluation order
+* Ред на изчисляване в switch
 
-Switch cases evaluate cases from top to bottom, stopping when a case succeeds.
+Отделните случаи се изчисляват от горе надолу, като изчислението спира при първият успешен `case`.
 
-(For example,
+(Например,
 
 	switch i {
 	case 0:
 	case f():
 	}
 
-does not call `f` if `i==0`.)
+ако `i==0`, не се стига до извикване на функцията `f`.)
 
-#appengine: *Note:* Time in the Go playground always appears to start at
-#appengine: 2009-11-10 23:00:00 UTC, a value whose significance is left as an
-#appengine: exercise for the reader.
+#appengine: *Забележка:* Времето в игрището на Go playground винаги изглежда, че започва от
+#appengine: 2009-11-10 23:00:00 UTC, стойност, чието значение е оставено като
+#appengine: упражнение на читателя.
 
 .play flowcontrol/switch-evaluation-order.go
 
-* Switch with no condition
+* Switch без условие
 
-Switch without a condition is the same as `switch`true`.
+Switch без условие е същото като да напишете `switch`true`.
 
-This construct can be a clean way to write long if-then-else chains.
+Този начин на записване е удобен за дълги if-then-else вериги.
 
 .play flowcontrol/switch-with-no-condition.go
 
-* Defer
+* Defer (Отложено извикване)
 
-A defer statement defers the execution of a function until the surrounding
-function returns.
+Твърдението defer отлага изпълнението на функция до момента преди извикващата функция да завърши.
 
-The deferred call's arguments are evaluated immediately, but the function call
-is not executed until the surrounding function returns.
+Аргументите на отложената функция се изчисляват незабавно, но самото извикване на функцията се отлага до края на извикващата функция.
 
 .play flowcontrol/defer.go
 
-* Stacking defers
+* Натрупване на отлагания
 
-Deferred function calls are pushed onto a stack. When a function returns, its
-deferred calls are executed in last-in-first-out order.
+Отложените извиквания на функции се нареждат на куп. Когато една функция завърши, отложените извиквания се изпълняват в реда първи-влязъл-последен-излязъл (last-in-first-out - LIFO).
 
-To learn more about defer statements read this
-[[https://blog.golang.org/defer-panic-and-recover][blog post]].
+За да научите повече за отлагането на извиквания, прочетете 
+[[https://blog.golang.org/defer-panic-and-recover][тази статия]].
 
 .play flowcontrol/defer-multi.go
 
-* Congratulations!
+* Поздравления!
 
-You finished this lesson!
+Завършихте урока!
 
-You can go back to the list of [[/list][modules]] to find what to learn next, or continue with the [[javascript:click('.next-page')][next lesson]].
+Може да се върнете към списъка с of [[/list][раздели]] и да изберете с какво да продължите или да продължите със [[javascript:click('.next-page')][следващия урока]].

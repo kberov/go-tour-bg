@@ -9,10 +9,10 @@ type Vertex struct {
 }
 
 var (
-	v1 = Vertex{1, 2}  // has type Vertex
-	v2 = Vertex{X: 1}  // Y:0 is implicit
-	v3 = Vertex{}      // X:0 and Y:0
-	p  = &Vertex{1, 2} // has type *Vertex
+	v1 = Vertex{1, 2}  // от тип Vertex
+	v2 = Vertex{X: 1}  // Y:0 е създадено по подразбиране
+	v3 = Vertex{}      // X:0 и Y:0 по подразбиране
+	p  = &Vertex{1, 2} // от тип *Vertex
 )
 
 func main() {

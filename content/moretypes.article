@@ -44,35 +44,36 @@ Go има указатели.
 
 * Указатели към структури
 
-Struct fields can be accessed through a struct pointer.
+Полетата в структурите, могат да се достъпят чрез указател към структурата.
 
-To access the field `X` of a struct when we have the struct pointer `p` we could
-write `(*p).X`.
-However, that notation is cumbersome, so the language permits us instead to
-write just `p.X`, without the explicit dereference.
+За да достъпим стойността на полето `X` в дадена структура от данни чрез указателя `p`,
+можем да напишем `(*p).X`.
+Но този начин на записване е тежък, така че езикът ни позволява
+да пишем просто `p.X`, без изрично посочване.
 
 .play moretypes/struct-pointers.go
 
-* Struct Literals
+* Буквално изписване на структури (Struct Literals)
 
-A struct literal denotes a newly allocated struct value by listing the values of its fields.
+Буквалното изписване на структура (struct literal) обозначава новосъздадена структура чрез
+последователно изписване на стойностите на нейните полета в реда, в който са обявени.
 
-You can list just a subset of fields by using the `Name:` syntax. (And the order of named fields is irrelevant.)
+Можете да изпишете само част от стойностите на полетата, като използвате правописа `Name: value`. (Редът на упоменаване на именуваните полета е без значение.)
 
-The special prefix `&` returns a pointer to the struct value.
+Представката за тази цел `&` връща указател към стойността на структурата.
 
 .play moretypes/struct-literals.go
 
 
-* Arrays
+* Масиви (подредени списъци от стойности)
 
-The type `[n]T` is an array of `n` values of type `T`.
+Типът `[n]T` е списък от  `n` стойности от типа `T`.
 
-The expression
+Изразът
 
 	var a [10]int
 
-declares a variable `a` as an array of ten integers.
+обявява променлива `a` като списък от десет цели числа.
 
 An array's length is part of its type, so arrays cannot be resized.
 This seems limiting, but don't worry;

@@ -8,15 +8,15 @@ func main() {
 	s := []int{2, 3, 5, 7, 11, 13}
 	printSlice(s)
 
-	// Slice the slice to give it zero length.
+	// Отрежете отрязъка, за да му зададете нулева дължина.
 	s = s[:0]
 	printSlice(s)
 
-	// Extend its length.
+	// Удължете го.
 	s = s[:4]
 	printSlice(s)
 
-	// Drop its first two values.
+	// Изхвърлете първите му две стойности.
 	s = s[2:]
 	printSlice(s)
 }

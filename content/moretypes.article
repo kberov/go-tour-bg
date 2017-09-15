@@ -171,17 +171,17 @@ Go предоставя удобен начин за работа с масив�
 .play moretypes/slice-len-cap.go
 
 
-* Nil slices
+* Нулеви отрязъци (Nil slices)
 
-The zero value of a slice is `nil`.
+Нулевата стойност на отрязък е `nil`.
 
-A nil slice has a length and capacity of 0
-and has no underlying array.
+Нулевият отрязък има дължина и вместимост 0
+и няма съответстващ масив.
 
 .play moretypes/nil-slices.go
 
 
-* Creating a slice with make
+* Създаване на отрязък с `make`
 
 Slices can be created with the built-in `make` function;
 this is how you create dynamically-sized arrays.

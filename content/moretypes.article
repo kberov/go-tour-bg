@@ -175,7 +175,7 @@ Go предоставя удобен начин за работа с масив�
 
 Нулевата стойност на отрязък е `nil`.
 
-Нулевият отрязък има дължина и вместимост 0
+Нулевият отрязък има дължина и вместимост 0,
 и няма съответстващ масив.
 
 .play moretypes/nil-slices.go
@@ -183,15 +183,14 @@ Go предоставя удобен начин за работа с масив�
 
 * Създаване на отрязък с `make`
 
-Slices can be created with the built-in `make` function;
-this is how you create dynamically-sized arrays.
+Отрязъци могат да се създават с вградената в езика функция `make`.
+Това е начинът за създаване на свободно преоразмеряващи се масиви.
 
-The `make` function allocates a zeroed array
-and returns a slice that refers to that array:
+Функцията `make` създава нулиран масив и връща отрязък, който сочи към този масив:
 
 	a := make([]int, 5)  // len(a)=5
 
-To specify a capacity, pass a third argument to `make`:
+За да укажете вместимост, подайте трети параметър на `make`:
 
 	b := make([]int, 0, 5) // len(b)=0, cap(b)=5
 
@@ -201,50 +200,48 @@ To specify a capacity, pass a third argument to `make`:
 .play moretypes/making-slices.go
 
 
-* Slices of slices
+* Отрязъци от отрязъци
 
-Slices can contain any type, including other slices.
+Отрязъците могат да съдържат всякакъв тип данни, включително други отрязъци.
 
 .play moretypes/slices-of-slice.go
 
 
-* Appending to a slice
+* Добавяне към отрязък
 
-It is common to append new elements to a slice, and so Go provides a built-in
-`append` function. The [[https://golang.org/pkg/builtin/#append][documentation]]
-of the built-in package describes `append`.
+Добавянето на нови части към отрязъци е често срещано действие и Go
+предоставя вградена функция `append`. [[https://golang.org/pkg/builtin/#append][Документацията]]
+на пакета `builtin` описва `append`.
 
 	func append(s []T, vs ...T) []T
 
-The first parameter `s` of `append` is a slice of type `T`, and the rest are
-`T` values to append to the slice.
+Първият параметър на `append` `s`  е отрязък от тип `T`, а останалите
+са стойности отново от типа `T`, които ще се добавят към отрязъка.
 
-The resulting value of `append` is a slice containing all the elements of the
-original slice plus the provided values.
+`append` връща нов отрязък, съдържащ всички части на първоначалния отрязък и новодобавените стойности.
 
-If the backing array of `s` is too small to fit all the given values a bigger
-array will be allocated. The returned slice will point to the newly allocated
-array.
+Ако съответстващият на `s` масив е твърде малък, за да побере всички подадени стойности,
+се заделя нов масив. Върнатият отрязък ще сочи към новозаделения масив.
 
-(To learn more about slices, read the [[https://blog.golang.org/go-slices-usage-and-internals][Slices: usage and internals]] article.)
+(За да научите повече за отрязъците, прочетете статията [[https://blog.golang.org/go-slices-usage-and-internals][Slices: usage and internals]].)
 
 .play moretypes/append.go
 
 
-* Range
+* Обход (range)
 
-The `range` form of the `for` loop iterates over a slice or map.
+`range` се използва с цикъла `for` за обхождане на отрязъци или речници.
 
-When ranging over a slice, two values are returned for each iteration.
-The first is the index, and the second is a copy of the element at that index.
+Когато се обхожда отрязък, за всяка единица на отрязъка се връщат две стойности.
+Първата е индексът (местоположението), а втората – копие на стойността, намираща се на това място.
 
 .play moretypes/range.go
 
-* Range continued
+* Обход (продължение)
 
-You can skip the index or value by assigning to `_`.
+Можете да пропуснете индекса или стойността, като присвоите изхода от повторението на `_`.
 
-If you only want the index, drop the ", value" entirely.
+Ако искате само индекса, можете да не пишете стойността изобщо.
 
 .play moretypes/range-continued.go
 

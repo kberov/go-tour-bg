@@ -314,40 +314,46 @@ _Забележка_: ако `elem` или `ok` не са обявени, мож
 
 * Упражнение: Речници
 
-Implement `WordCount`.  It should return a map of the counts of each “word” in the string `s`. The `wc.Test` function runs a test suite against the provided function and prints success or failure.
+Допишете функцията `WordCount`. Тя трябва да връща речник, 
+съдържащ броя намерени повторения на всяка „дума“  в низа  `s`.
+Функцията `wc.Test` изпълнява тестове върху предоставената функция отпечатва изход за успех или грешка.
 
-You might find [[https://golang.org/pkg/strings/#Fields][strings.Fields]] helpful.
+[[https://golang.org/pkg/strings/#Fields][strings.Fields]] ще ви свърши добра работа.
 
 .play moretypes/exercise-maps.go
 
-* Function values
+* Функции като стойности
 
-Functions are values too. They can be passed around just like other values.
+Функциите са и стойности. Те могат да бъдат използвани като всяка друга стойност.
 
-Function values may be used as function arguments and return values.
+Могат да се подават като аргументи на други функции и да бъдат връщани като стойност.
 
 .play moretypes/function-values.go
 
-* Function closures
+* функции затваряния
 
-Go functions may be closures. A closure is a function value that references variables from outside its body. The function may access and assign to the referenced variables; in this sense the function is "bound" to the variables.
+Функциите в Go могат да бъдат и _затваряния_. Затварянето е стойност на функция,
+която се обръща към променлива от своята обкръжаваща среда. Функцията може да чете
+и да присвоява стойности на променливи, обявени извън нейното тяло.
+(Така тя ги „затваря" в себе си. бел. прев.) В този смисъл можем да кажем,
+че функцията е обвързана с променливите.
 
-For example, the `adder` function returns a closure. Each closure is bound to its own `sum` variable.
+Например функцията `adder` връща затваряне. Всяко затваряне е обвързано със собствената си променлива `sum`.
 
 .play moretypes/function-closures.go
 
-* Exercise: Fibonacci closure
+* Упражнение:Затваряне Фибоначи
 
-Let's have some fun with functions.
+Да се позабавляваме с функциите.
 
-Implement a `fibonacci` function that returns a function (a closure) that
-returns successive [[https://en.wikipedia.org/wiki/Fibonacci_number][fibonacci numbers]]
+Създайте функция `fibonacci`, която връща функция (затваряне), което пък последователно връща
+returns successive [[https://en.wikipedia.org/wiki/Fibonacci_number][числа от поредицата на Фибоначи]]
 (0, 1, 1, 2, 3, 5, ...).
 
 .play moretypes/exercise-fibonacci-closure.go
 
-* Congratulations!
+* Поздравления!
 
-You finished this lesson!
+Завършихте този урок!
 
-You can go back to the list of [[/list][modules]] to find what to learn next, or continue with the [[javascript:click('.next-page')][next lesson]].
+Може да се върнете към списъка с [[/list][раздели]] и да изберете с какво да продължите или да продължите със [[javascript:click('.next-page')][следващия урок]].

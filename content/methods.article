@@ -11,68 +11,65 @@ Go няма класове.
 
 Методът е функция с допълнителен аргумент, наречен _получател_.
 
-The receiver appears in its own argument list between the `func` keyword and
-the method name.
+Получателят се пише в отделен списък с аргументи между ключовата дума `func` и името на метода.
 
-In this example, the `Abs` method has a receiver of type `Vertex` named `v`.
+В този пример методът  `Abs` има получател от тип `Vertex`, именуван `v`.
 
 .play methods/methods.go
 
-* Methods are functions
+* Методите са функции
 
-Remember: a method is just a function with a receiver argument.
+Запомнете: методът е просто функция с допълнителен аргумент за получател.
 
-Here's `Abs` written as a regular function with no change in functionality.
+Тук `Abs` е написана като обикновена функция със същото действие.
 
 .play methods/methods-funcs.go
 
-* Methods continued
+* Методи (продължение)
 
-You can declare a method on non-struct types, too.
+Можете да обявявате методи за типове, които не са структури.
 
-In this example we see a numeric type `MyFloat` with an `Abs` method.
+В този пример виждаме числов тип `MyFloat` с метод `Abs`.
 
-You can only declare a method with a receiver whose type is defined in the same
-package as the method.
-You cannot declare a method with a receiver whose type is defined in another
-package (which includes the built-in types such as `int`).
+Можете да обявявате метод с получател, които се намира в същия пакет, в който е метода.
+Не можете да обявявате метод с получател, обявен в друг пакет.
+Това включва вградените в езика типове като `int`.
 
 .play methods/methods-continued.go
 
-* Pointer receivers
+* Получатели указатели
 
-You can declare methods with pointer receivers.
+Можете да обявявате методи, които получават указатели.
 
-This means the receiver type has the literal syntax `*T` for some type `T`.
-(Also, `T` cannot itself be a pointer such as `*int`.)
+Това означава, че получателят се изписва с тип `*T` за типа `T`.
+(Също така, самият `T` не може да бъде указател, например `*int`.)
 
-For example, the `Scale` method here is defined on `*Vertex`.
+Например методът `Scale` е обявен за `*Vertex`.
 
-Methods with pointer receivers can modify the value to which the receiver
-points (as `Scale` does here).
-Since methods often need to modify their receiver, pointer receivers are more
-common than value receivers.
+Методите с получатели указатели могат да променят стойността,
+към която указателят сочи (какъвто е случаят със `Scale` тук).
+Тъй като често се налага методите да променят състоянието на получателя си,
+по-често се срещат методи с получатели указатели, отколкото получатели стойности.
 
-Try removing the `*` from the declaration of the `Scale` function on line 16
-and observe how the program's behavior changes.
+Махнете `*` от обявлението на функцията `Scale` на ред 16
+и вижте как се променя поведението на програмата.
 
-With a value receiver, the `Scale` method operates on a copy of the original
-`Vertex` value.
-(This is the same behavior as for any other function argument.)
-The `Scale` method must have a pointer receiver to change the `Vertex` value
-declared in the `main` function.
+Когато получателят е стойност, методът `Scale` извършва действието си върху копие на стойноста от тип `Vertex`.
+(Поведението е същото като при всеки друг аргумент на функцията.)
+Методът `Scale` трябва да има получател указател (да получи указател),
+за да промени стойността на `Vertex`, която бе обявена във функцията `main`.
 
 .play methods/methods-pointers.go
 
-* Pointers and functions
+* Указатели и функции
 
-Here we see the `Abs` and `Scale` methods rewritten as functions.
+Тук виждаме методите `Abs` и `Scale` пренаписани като функции.
 
-Again, try removing the `*` from line 16.
-Can you see why the behavior changes?
-What else did you need to change for the example to compile?
+Отново махнете `*` от ред 16.
+Разбирате ли защо се променя поведението.
+Какво друго трябва да се промени за да се компилира примерът?
 
-(If you're not sure, continue to the next page.)
+(Ако не сте сигурни, отидете на следващата страница.)
 
 .play methods/methods-pointers-explained.go
 

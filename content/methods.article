@@ -66,96 +66,95 @@ Go няма класове.
 Тук виждаме методите `Abs` и `Scale` пренаписани като функции.
 
 Отново махнете `*` от ред 16.
-Разбирате ли защо се променя поведението.
+Разбирате ли защо се променя поведението?
 Какво друго трябва да се промени за да се компилира примерът?
 
 (Ако не сте сигурни, отидете на следващата страница.)
 
 .play methods/methods-pointers-explained.go
 
-* Methods and pointer indirection
+* Методи и опосредстване на указателите
 
-Comparing the previous two programs, you might notice that
-functions with a pointer argument must take a pointer:
-
-	var v Vertex
-	ScaleFunc(v, 5)  // Compile error!
-	ScaleFunc(&v, 5) // OK
-
-while methods with pointer receivers take either a value or a pointer as the
-receiver when they are called:
+Като сравнявате предишните два примера трябва да сте забелязали, че на
+функциите, обявени като приемащи аргумент указател, трябва да се подава
+указател,
 
 	var v Vertex
-	v.Scale(5)  // OK
+	ScaleFunc(v, 5)  // Грешка по време на компилиране!
+	ScaleFunc(&v, 5) // Работи
+
+докато методите с получатели указатели, могат да се извикват върху указател или стойност.
+
+	var v Vertex
+	v.Scale(5)  // Работи
 	p := &v
-	p.Scale(10) // OK
+	p.Scale(10) // Работи
 
-For the statement `v.Scale(5)`, even though `v` is a value and not a pointer,
-the method with the pointer receiver is called automatically.
-That is, as a convenience, Go interprets the statement `v.Scale(5)` as
-`(&v).Scale(5)` since the `Scale` method has a pointer receiver.
+При твърдението `v.Scale(5)`, въпреки че `v` е стойност, а не указател,
+методът с получател указател се извиква автоматично.
+За удобство Go превръща извикването `v.Scale(5)` във
+`(&v).Scale(5)`, тъй като методът `Scale` има получател указател.
 
 .play methods/indirection.go
 
-* Methods and pointer indirection (2)
+* Методи и опосредстване на указателите (2)
 
-The equivalent thing happens in the reverse direction.
+Същото се случва и в обратната посока.
 
-Functions that take a value argument must take a value of that specific type:
-
-	var v Vertex
-	fmt.Println(AbsFunc(v))  // OK
-	fmt.Println(AbsFunc(&v)) // Compile error!
-
-while methods with value receivers take either a value or a pointer as the
-receiver when they are called:
+На функции, които приемат аргумент стойност, трябва да се подават само стойности от дадения тип,
 
 	var v Vertex
-	fmt.Println(v.Abs()) // OK
+	fmt.Println(AbsFunc(v))  // Работи
+	fmt.Println(AbsFunc(&v)) // Грешка по време на компилиране!
+
+докато методи със получатели стойности, могат да бъдат извиквани както върху стойност, така и върху указател.
+
+	var v Vertex
+	fmt.Println(v.Abs()) // Работи
 	p := &v
-	fmt.Println(p.Abs()) // OK
+	fmt.Println(p.Abs()) // Работи
 
-In this case, the method call `p.Abs()` is interpreted as `(*p).Abs()`.
+В този случай извикването `p.Abs()` се превръща вътрешно в `(*p).Abs()`.
 
 .play methods/indirection-values.go
 
-* Choosing a value or pointer receiver
+* Как да изберем получател указател или стойност
 
-There are two reasons to use a pointer receiver.
+Има две причини да изберете за получател указател.
 
-The first is so that the method can modify the value that its receiver points to.
+Първата е, за да може методът да променя стойността, към която сочи указателят.
 
-The second is to avoid copying the value on each method call.
-This can be more efficient if the receiver is a large struct, for example.
+Втората е, за да избегнете копирането на стойността в паметта при всяко извикване на метода.
+Това се оказва много удачно ако получателят е огромна структура.
 
-In this example, both `Scale` and `Abs` are with receiver type `*Vertex`,
-even though the `Abs` method needn't modify its receiver.
+В този случай и `Scale`, и `Abs` имат получатели указатели от тип `*Vertex`,
+въпреки че методът `Abs` не променя стойността на получателя си.
 
-In general, all methods on a given type should have either value or pointer
-receivers, but not a mixture of both.
-(We'll see why over the next few pages.)
+По правило, всички методи на даден тип, трябва да получават само стойност или само указател.
+Не смесвайте получателите на методите за един тип.
+(Ще видим защо на следващите няколко страници)
 
 .play methods/methods-with-pointer-receivers.go
 
-* Interfaces
+* Интерфейси (взаимодействия)
 
-An _interface_type_ is defined as a set of method signatures.
+Един _тип_интерфейс_ (_тип_взаимодействие_) се обявява като набор от описания на методи.
 
-A value of interface type can hold any value that implements those methods.
+Типът взаимодействие може да съдържа всякаква стойност, която осъществява тези методи
 
-*Note:* There is an error in the example code on line 22.
-`Vertex` (the value type) doesn't implement `Abser` because
-the `Abs` method is defined only on `*Vertex` (the pointer type).
+*Забележка:* Има грешка в примерния код на ред 22.
+`Vertex` (типът стойност) не осъществява (не имплементира) `Abser` защото
+методът `Abs` е обявен само за `*Vertex` (указателя към типа).
 
 .play methods/interfaces.go
 
-* Interfaces are implemented implicitly
+* Интерфейсите се осъществяват без изрично указване
 
-A type implements an interface by implementing its methods.
-There is no explicit declaration of intent, no "implements" keyword.
+Даден тип осъществява интерфейс като осъществява неговите методи.
+Няма изрично упоменаване на намеренията, няма ключова дума "implements".
 
-Implicit interfaces decouple the definition of an interface from its
-implementation, which could then appear in any package without prearrangement.
+Неявните интерфейси отделят описването на интерфейса от осъществяването му,
+което може да се окаже в който и да е пакет без изрично указване.
 
 .play methods/interfaces-are-satisfied-implicitly.go
 

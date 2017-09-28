@@ -120,7 +120,7 @@ Go няма класове.
 
 * Как да изберем получател указател или стойност
 
-Има две причини да изберете за получател указател.
+Има *две*причини* да изберете за получател указател.
 
 Първата е, за да може методът да променя стойността, към която сочи указателят.
 
@@ -136,75 +136,79 @@ Go няма класове.
 
 .play methods/methods-with-pointer-receivers.go
 
-* Интерфейси (взаимодействия)
+* Взаимодействия (интерфейси)
 
-Един _тип_интерфейс_ (_тип_взаимодействие_) се обявява като набор от описания на методи.
+_Тип_взаимодействие_ (_тип,_описващ_взаимодействие_с_други_типове_) се обявява като набор от описания на методи.
 
 Типът взаимодействие може да съдържа всякаква стойност, която осъществява тези методи
 
 *Забележка:* Има грешка в примерния код на ред 22.
 `Vertex` (типът стойност) не осъществява (не имплементира) `Abser` защото
-методът `Abs` е обявен само за `*Vertex` (указателя към типа).
+методът `Abs` е определен само за `*Vertex` (указателя към типа).
 
 .play methods/interfaces.go
 
-* Интерфейсите се осъществяват без изрично указване
+* Типовете взаимодействия се осъществяват без изрично указване
 
-Даден тип осъществява интерфейс като осъществява неговите методи.
+Даден тип осъществява тип взаимодействие (интерфейс) просто
+чрез осъществяване на неговите методи.
 Няма изрично упоменаване на намеренията, няма ключова дума "implements".
 
-Неявните интерфейси отделят описването на интерфейса от осъществяването му,
-което може да се окаже в който и да е пакет без изрично указване.
+Неявните типове взаимодействия отделят описването на типа от осъществяването му,
+което може да се окаже, в който и да е пакет, без допълнително указание.
 
 .play methods/interfaces-are-satisfied-implicitly.go
 
-* Interface values
+* Стойности на типовете взаимодействия
 
-Under the covers, interface values can be thought of as a tuple of a value and a
-concrete type:
+Стойностите на типовете взаимодействия могат да бъдат разбирани като
+двойка стойност и определен тип:
 
 	(value, type)
 
-An interface value holds a value of a specific underlying concrete type.
+Една стойност на тип взаимодействие съдържа стойност от определен отделен тип.
 
-Calling a method on an interface value executes the method of the same name on
-its underlying type.
+Като извикваме метод върху стойност на тип взаимодействие,
+ние изпълняваме определен метод със същото име.
+Този метод е обявен за стойности на отделния текущ тип.
 
 .play methods/interface-values.go
 
-* Interface values with nil underlying values
+* Стойности на типове взаимодействие, съдържащи `nil`
 
-If the concrete value inside the interface itself is nil,
-the method will be called with a nil receiver.
+Ако дадена стойност на типа за взаимодействие е `nil`,
+методът ще бъде изпълнен върху получател със стойност `nil`.
 
-In some languages this would trigger a null pointer exception,
-but in Go it is common to write methods that gracefully handle being called
-with a nil receiver (as with the method `M` in this example.)
+В някои езици това ще предизвика изключение при използване на нулев указател
+(null pointer exception), но в Go често може да срещнете методи, които обработват случаите,
+в които са извикани върху получатели със стойност `nil`.
+(Такъв е случаят с метода `M` в този пример.)
 
-Note that an interface value that holds a nil concrete value is itself non-nil.
+Забележете, че стойност на тип взаимодействие, която съдържа нулева стойност, сама по себе си не е `nil`.
 
 .play methods/interface-values-with-nil.go
 
-* Nil interface values
+* Стойности на типове за взаимодействие, които са `nil`.
 
-A nil interface value holds neither value nor concrete type.
+`nil` стойности на типове за взаимодействие не съдържат нито стойност, нито определен тип.
 
-Calling a method on a nil interface is a run-time error because there is no
-type inside the interface tuple to indicate which _concrete_ method to call.
+Извикването на метод върху такава стойност предизвиква грешка по време на изпълнение,
+защото няма тип в двойката „тип за взаимодействие - стойност",
+който да осъществява извиквания метод.
 
 .play methods/nil-interface-values.go
 
-* The empty interface
+* Празният интерфейс (празен тип за взаимодействие)
 
-The interface type that specifies zero methods is known as the _empty_interface_:
+Типът за взаимодействие, който не описва никакви методи, се нарича _празен_:
 
 	interface{}
 
-An empty interface may hold values of any type.
-(Every type implements at least zero methods.)
+Празен тип за взаимодействие може да съдържа стойност от всякакъв тип.
+(Всеки тип осъществява поне нула метода.)
 
-Empty interfaces are used by code that handles values of unknown type.
-For example, `fmt.Print` takes any number of arguments of type `interface{}`.
+Празен интерфейс се използва от програмен код, който обработва данни с непознат тип.
+Например, `fmt.Print` приема неограничен брой аргумент от тип `interface{}`.
 
 .play methods/empty-interface.go
 

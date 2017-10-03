@@ -18,4 +18,4 @@
 който може да бъде намерен във файла LICENSE.
 
 Ако решите да допринесете, следвайте същите указания като в проекта Go:
-http://golang.org/doc/contribute.html
+https://golang.org/doc/contribute.html

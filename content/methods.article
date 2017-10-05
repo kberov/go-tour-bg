@@ -269,27 +269,28 @@ Switch с типове е като обикновеното твърдение s
 
 * Stringers
 
-One of the most ubiquitous interfaces is [[//golang.org/pkg/fmt/#Stringer][`Stringer`]] defined by the [[//golang.org/pkg/fmt/][`fmt`]] package.
+Един от най-разпространените типове за взаимодействие [[//golang.org/pkg/fmt/#Stringer][`Stringer`]]
+е описан в пакета [[//golang.org/pkg/fmt/][`fmt`]].
 
 	type Stringer interface {
 		String() string
 	}
 
-A `Stringer` is a type that can describe itself as a string. The `fmt` package
-(and many others) look for this interface to print values.
+`Stringer` е тип, който може да представи себе си като низ. Пакетът `fmt` package
+(и много други) търсят това взаимодействие, за да отпечатват стойности.
 
 .play methods/stringer.go
 
-* Exercise: Stringers
+* Упражнение: Stringers
 
-Make the `IPAddr` type implement `fmt.Stringer` to print the address as
-a dotted quad.
+Направете типа `IPAddr` да осъществява `fmt.Stringer`,
+за да може да отпечатва адреса като четири числа с точки.
 
-For instance, `IPAddr{1,`2,`3,`4}` should print as `"1.2.3.4"`.
+Например, `IPAddr{1,`2,`3,`4}` да се отпечатва като `"1.2.3.4"`.
 
 .play methods/exercise-stringer.go
 
-* Errors
+* Грешки
 
 Go programs express error state with `error` values.
 

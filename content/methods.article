@@ -292,61 +292,63 @@ Switch с типове е като обикновеното твърдение s
 
 * Грешки
 
-Go programs express error state with `error` values.
+Програмите, написани на Go изразяват състояние за грешка чрез стойности `error`.
 
-The `error` type is a built-in interface similar to `fmt.Stringer`:
+Типът `error` е стандартен тип за взаимодействие, подобен на `fmt.Stringer`:
 
 	type error interface {
 		Error() string
 	}
 
-(As with `fmt.Stringer`, the `fmt` package looks for the `error` interface when
-printing values.)
+(Както при `fmt.Stringer`, пакетът `fmt`  търси типа за взаимодействие `error`,
+когато отпечатва стойности за грешка.)
 
-Functions often return an `error` value, and calling code should handle errors
-by testing whether the error equals `nil`.
+Функциите често връщат стойности от тип `error` и извикващия код
+трябва да ги обработва като проверява дали грешката не е `nil`.
 
 	i, err := strconv.Atoi("42")
 	if err != nil {
-		fmt.Printf("couldn't convert number: %v\n", err)
+		fmt.Printf("превръщането в число е неуспешно: %v\n", err)
 		return
 	}
-	fmt.Println("Converted integer:", i)
+	fmt.Println("Превърнато в цяло число:", i)
 
-A nil `error` denotes success; a non-nil `error` denotes failure.
+Грешка със стойност  `nil` означава успех; `error`, която не е `nil` означава провал.
 
 .play methods/errors.go
 
-* Exercise: Errors
+* Упражнение: Грешки
 
-Copy your `Sqrt` function from the [[/flowcontrol/8][earlier exercise]] and modify it to return an `error` value.
+Копирайте функцията `Sqrt` от [[/flowcontrol/8][предишното упражнение]] и я променете така,
+че да връща стойност от тип `error`.
 
-`Sqrt` should return a non-nil error value when given a negative number, as it doesn't support complex numbers.
+`Sqrt` трябва да върне ненулева стойност за грешка при подаване на на отрицателно число,
+тъй като не поддържа отрицателни числа.
 
-Create a new type
+Създайте нов тип
 
 	type ErrNegativeSqrt float64
 
-and make it an `error` by giving it a
+и го направете с взаимодействие `error` като му добавите метод
 
 	func (e ErrNegativeSqrt) Error() string
 
-method such that `ErrNegativeSqrt(-2).Error()` returns `"cannot`Sqrt`negative`number:`-2"`.
+който при използване `ErrNegativeSqrt(-2).Error()` връща `"cannot`Sqrt`negative`number:`-2"`.
 
-*Note:* a call to `fmt.Sprint(e)` inside the `Error` method will send the program into an infinite loop. You can avoid this by converting `e` first: `fmt.Sprint(float64(e))`. Why?
+*Забележка:* Когато извикате `fmt.Sprint(e)` в метода `Error`, програмта ще влезе в безкраен цикъл. Това може да се избегне като предварително превърнете `e` в друг тип: `fmt.Sprint(float64(e))`. Защо?
 
-Change your `Sqrt` function to return an `ErrNegativeSqrt` value when given a negative number.
+Променете функцията `Sqrt` така, че да връща стойност от тип `ErrNegativeSqrt`, когато ѝ се подаде отрицателно число.
 
 .play methods/exercise-errors.go
 
-* Readers
+* Четци (Readers)
 
-The `io` package specifies the `io.Reader` interface,
-which represents the read end of a stream of data.
+Пакетът `io` описва типа за взаимодействие `io.Reader`,
+който представлява края на четенето на поток от данни.
 
-The Go standard library contains [[https://golang.org/search?q=Read#Global][many implementations]] of these interfaces, including files, network connections, compressors, ciphers, and others.
+Стандартната библиотека на Go съдържа [[https://golang.org/search?q=Read#Global][много изпълнения]] на тези типове за взаимодействия, включващи работа с файлове, установяване на връзка с мрежи, архиватори, шифри и други.
 
-The `io.Reader` interface has a `Read` method:
+Типът за взаимодействие `io.Reader` има метод `Read`:
 
 	func (T) Read(b []byte) (n int, err error)
 

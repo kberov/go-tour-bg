@@ -346,45 +346,50 @@ Switch с типове е като обикновеното твърдение s
 Пакетът `io` описва типа за взаимодействие `io.Reader`,
 който представлява края на четенето на поток от данни.
 
-Стандартната библиотека на Go съдържа [[https://golang.org/search?q=Read#Global][много изпълнения]] на тези типове за взаимодействия, включващи работа с файлове, установяване на връзка с мрежи, архиватори, шифри и други.
+Стандартната библиотека на Go съдържа [[https://golang.org/search?q=Read#Global][много изпълнения]]
+на тези типове за взаимодействия, включващи работа с файлове,
+установяване на връзка с мрежи, архиватори, шифри и други.
 
 Типът за взаимодействие `io.Reader` има метод `Read`:
 
 	func (T) Read(b []byte) (n int, err error)
 
-`Read` populates the given byte slice with data and returns the number of bytes
-populated and an error value. It returns an `io.EOF` error when the stream
-ends.
+`Read` пълни подадения отрязък байтове с данни и връща броя на добавените байтове и стойност за грешка.
+Когато потокът от данни свърши, грешката е `io.EOF`.
 
-The example code creates a
+Примерният код създава
 [[//golang.org/pkg/strings/#Reader][`strings.Reader`]]
-and consumes its output 8 bytes at a time.
+и приема изхода от него на късове от 8 байта.
 
 .play methods/reader.go
 
-* Exercise: Readers
+* Упражнение: Четци
 
-Implement a `Reader` type that emits an infinite stream of the ASCII character
-`'A'`.
+Създайте тип `Reader`, който връща безкраен поток от ASCII знака `'A'`.
 
 .play methods/exercise-reader.go
 
-* Exercise: rot13Reader
+* Упражнение: rot13Reader
 
-A common pattern is an [[https://golang.org/pkg/io/#Reader][io.Reader]] that wraps another `io.Reader`, modifying the stream in some way.
+Често един [[https://golang.org/pkg/io/#Reader][io.Reader]]
+обгръща друг `io.Reader`, като променя потока от знаци по някакъв начин.
 
-For example, the [[https://golang.org/pkg/compress/gzip/#NewReader][gzip.NewReader]] function takes an `io.Reader` (a stream of compressed data) and returns a `*gzip.Reader` that also implements `io.Reader` (a stream of the decompressed data).
+Например функцията [[https://golang.org/pkg/compress/gzip/#NewReader][gzip.NewReader]]
+приема `io.Reader` (поток от архивирани данни) и връща `*gzip.Reader`,
+който също осъществява `io.Reader` (поток от разархивирани данни).
 
-Implement a `rot13Reader` that implements `io.Reader` and reads from an `io.Reader`, modifying the stream by applying the [[https://en.wikipedia.org/wiki/ROT13][rot13]] substitution cipher to all alphabetical characters.
+Създайте `rot13Reader`, който осъществява `io.Reader` и чете от `io.Reader`,
+като променя потока, прилагайки шифриращия алгоритъм
+[[https://en.wikipedia.org/wiki/ROT13][rot13]] върху всички буквени знаци.
 
-The `rot13Reader` type is provided for you.
-Make it an `io.Reader` by implementing its `Read` method.
+Типът `rot13Reader` се намира в кода вече.
+Направете го да взаимодейства като `io.Reader` като напишете метода `Read`.
 
 .play methods/exercise-rot-reader.go
 
-* Images
+* Изображения
 
-[[https://golang.org/pkg/image/#Image][Package image]] defines the `Image` interface:
+[[https://golang.org/pkg/image/#Image][Пакетът image]] описва типа за взаимодействие `Image`:
 
 	package image
 
@@ -394,7 +399,7 @@ Make it an `io.Reader` by implementing its `Read` method.
 		At(x, y int) color.Color
 	}
 
-*Note*: the `Rectangle` return value of the `Bounds` method is actually an
+*Забележка*: the `Rectangle` return value of the `Bounds` method is actually an
 [[https://golang.org/pkg/image/#Rectangle][`image.Rectangle`]], as the
 declaration is inside package `image`.
 

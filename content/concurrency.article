@@ -22,36 +22,39 @@ _Го-нишката_ представлява лека нишка, управл
 
 .play concurrency/goroutines.go
 
-* Channels
+* Канали
 
-Channels are a typed conduit through which you can send and receive values with the channel operator, `<-`.
+Каналите са типизирани тръбопроводи, през които можете да изпращате и получавате
+стойности с оператора за канал `<-`.
 
-	ch <- v    // Send v to channel ch.
-	v := <-ch  // Receive from ch, and
-	           // assign value to v.
+	ch <- v    // Изпращане на стойност към канала ch.
+	v := <-ch  // Получаване на стойност от канала ch
+    // и присвояване на стойност на v.
 
-(The data flows in the direction of the arrow.)
+(Данните текат в посоката, указана от стрелката.)
 
-Like maps and slices, channels must be created before use:
+Както речниците и отрязъците, каналите трябва да се създадат преди да се използват:
 
 	ch := make(chan int)
 
-By default, sends and receives block until the other side is ready. This allows goroutines to synchronize without explicit locks or condition variables.
+По подразбиране изпращането и получаването на данни спира изпълнението на програмата, докато другата страна е готова.
+Това позволява го-нишките да работят в съзвучие без изрични заключвания или променливи за условия.
 
-The example code sums the numbers in a slice, distributing the work between two goroutines.
-Once both goroutines have completed their computation, it calculates the final result.
+Примерният код събира числата в отрязъка, като разпределя работата между две го-нишки.
+Щом нишките приключат с изчисленията, се пресмята крайния изход.
 
 .play concurrency/channels.go
 
-* Buffered Channels
+* Буферирани канали
 
-Channels can be _buffered_.  Provide the buffer length as the second argument to `make` to initialize a buffered channel:
+Каналите могат да бъдат _буферирани_.  Подайте дължината на буфера като втори параметър на `make`, за да създадете буфериран канал:
 
 	ch := make(chan int, 100)
 
-Sends to a buffered channel block only when the buffer is full. Receives block when the buffer is empty.
+Изпращанията към буферирани канали спират изпълнението на програмата само когато буферът е пълен.
+Получаванията спират изпълнението на рограмата само когато буферът е празен.
 
-Modify the example to overfill the buffer and see what happens.
+Променете програмата така че да препълните буфера и вижте какво се случва.
 
 .play concurrency/buffered-channels.go
 

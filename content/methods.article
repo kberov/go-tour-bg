@@ -399,32 +399,42 @@ Switch с типове е като обикновеното твърдение s
 		At(x, y int) color.Color
 	}
 
-*Забележка*: the `Rectangle` return value of the `Bounds` method is actually an
-[[https://golang.org/pkg/image/#Rectangle][`image.Rectangle`]], as the
-declaration is inside package `image`.
+*Забележка*: Връщаната от метода `Bounds` стойност `Rectangle` е всъщност
+[[https://golang.org/pkg/image/#Rectangle][`image.Rectangle`]], тъй като обявяването
+се намира в пакета `image`.
 
-(See [[https://golang.org/pkg/image/#Image][the documentation]] for all the details.)
+(Вижте [[https://golang.org/pkg/image/#Image][документацията]],
+за да се запознаете с всички подробности.)
 
-The `color.Color` and `color.Model` types are also interfaces, but we'll ignore that by using the predefined implementations `color.RGBA` and `color.RGBAModel`. These interfaces and types are specified by the [[https://golang.org/pkg/image/color/][image/color package]]
+Типовете `color.Color` и `color.Model` са също типове за взаимодействие,
+но засега ще ги пренебрегнем като използваме вече осъществените
+`color.RGBA` и `color.RGBAModel`. Тези взаимодействия и осъществени типове са обявени в пакета
+[[https://golang.org/pkg/image/color/][image/color]].
 
 .play methods/images.go
 
-* Exercise: Images
+* Упражнение: Изображения
 
-Remember the picture generator you wrote earlier? Let's write another one, but this time it will return an implementation of `image.Image` instead of a slice of data.
+Спомняте ли си създателя на изображения, който писахте в един от предишните уроци?
+Да напишем друг такъв, но новият ще връща осъществен тип
+`image.Image` вместо отрязък от данни.
 
-Define your own `Image` type, implement [[https://golang.org/pkg/image/#Image][the necessary methods]], and call `pic.ShowImage`.
+Създайте ваш тип `Image`. Осъществете [[https://golang.org/pkg/image/#Image][нужните методи]],
+и извикайте `pic.ShowImage`.
 
-`Bounds` should return a `image.Rectangle`, like `image.Rect(0,`0,`w,`h)`.
+`Bounds` трябва да връща `image.Rectangle`, като `image.Rect(0,`0,`w,`h)`.
 
-`ColorModel` should return `color.RGBAModel`.
+`ColorModel` трябва да връща `color.RGBAModel`.
 
-`At` should return a color; the value `v` in the last picture generator corresponds to `color.RGBA{v,`v,`255,`255}` in this one.
+`At` трябва да връща цвят. Стойността `v` в предишния създател на изображения
+съответства на `color.RGBA{v,`v,`255,`255}` в този.
 
 .play methods/exercise-images.go
 
-* Congratulations!
+* Поздравления!
 
-You finished this lesson!
+Завършихте този урок!
 
-You can go back to the list of [[/list][modules]] to find what to learn next, or continue with the [[javascript:click('.next-page')][next lesson]].
+Може да се върнете към списъка с [[/list][раздели]] и да изберете с какво да продължите
+или да продължите със [[javascript:click('.next-page')][следващия урок]].
+

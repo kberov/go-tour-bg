@@ -1,4 +1,4 @@
-Едновременност
+Едновременно изпълнение
 Go предоставя възможност за едновременно изпълнение на код. Тази способност е заложена в ядрото на езика. Следващите уроци обясняват как се постига това и дават някои примери.
 
 The Go Authors
@@ -58,54 +58,64 @@ _Го-нишката_ представлява лека нишка, управл
 
 .play concurrency/buffered-channels.go
 
-* Range and Close
+* Обхват и затваряне
 
-A sender can `close` a channel to indicate that no more values will be sent. Receivers can test whether a channel has been closed by assigning a second parameter to the receive expression: after
+Изпращачът може да затвори (`close`) канала, за да укаже, че няма да бъдат изпращани повече данни.
+Получателите могат да проверяват дали каналът е затворен вече, като добавят втори параметър към израза за получаване.
 
 	v, ok := <-ch
 
-`ok` is `false` if there are no more values to receive and the channel is closed.
+`ok`  е `false` ако вече няма стойностти за получаване и каналът е затворен.
 
-The loop `for`i`:=`range`c` receives values from the channel repeatedly until it is closed.
+Цикълът `for`i`:=`range`c` получава данни от канала при всяко повторение докато каналът бъде затворен.
 
-*Note:* Only the sender should close a channel, never the receiver. Sending on a closed channel will cause a panic.
+*Забележка:* Само изпращачът трябва да затваря канала – никога получателят.
+Изпращане на данни към затворен канал ще предизвика _паника_ (panic). Програмата ще приключи с грешка.
 
-*Another*note*: Channels aren't like files; you don't usually need to close them. Closing is only necessary when the receiver must be told there are no more values coming, such as to terminate a `range` loop.
+*Друга*забележка*: Каналите не са като файловете. Обикновено няма нужда да бъдат затваряни.
+Затварянето е необходимо само за да се уведоми получателят на данни по канала,
+че няма да има повече стойности за получаване. Така получателят ще знае да прекъсне цикъла за обхождане `range`.
 
 .play concurrency/range-and-close.go
 
 * Select
 
-The `select` statement lets a goroutine wait on multiple communication operations.
+Твърдението `select` позволява на нишката да чака данни от различни канали.
 
-A `select` blocks until one of its cases can run, then it executes that case.  It chooses one at random if multiple are ready.
+`select` спира програмата докато един от случаите може да бъде изпълнен и го изпълнява.
+Ако повече от един от случаите може да бъде изпълнен, се избира един на случаен принцип.
 
 .play concurrency/select.go
 
-* Default Selection
+* Избор по подразбиране
 
-The `default` case in a `select` is run if no other case is ready.
+Случаят `default` (краен случай) в един израз `select` се изпълнява
+ако нито един от другите случаи няма данни за получаване.
 
-Use a `default` case to try a send or receive without blocking:
+Използвайте случая `default`, за да изпращате и получавате,
+без да спирате изпълнението на програмата (без да я блокирате):
 
 	select {
 	case i := <-c:
-		// use i
+		// използвате i
 	default:
-		// receiving from c would block
+		// получаване на данни от c би блокирало програмата
 	}
 
 .play concurrency/default-selection.go
 
-* Exercise: Equivalent Binary Trees
+* Упражнение: Еднакви двоични дървета
 
-There can be many different binary trees with the same sequence of values stored at the leaves. For example, here are two binary trees storing the sequence 1, 1, 2, 3, 5, 8, 13.
+Могат да съществуват различни двоични дървета с една и съща последователност съхранявана в разклоненията.
+Ето например две двоични дървета, които съхраняват последователността 1, 1, 2, 3, 5, 8, 13.
 
 .image /content/img/tree.png
 
-A function to check whether two binary trees store the same sequence is quite complex in most languages. We'll use Go's concurrency and channels to write a simple solution.
+Да се напише функция, която да проверява дали две дървета съдържат една и съща
+последователност е доста сложно в повечето езици. Ще използваме едновременно изпълнение
+и каналите в Go, за да напишем просто решение. 
 
-This example uses the `tree` package, which defines the type:
+Този пример използва пакета `tree`, в който е обявен този тип:
 
 	type Tree struct {
 		Left  *Tree
@@ -114,100 +124,104 @@ This example uses the `tree` package, which defines the type:
 	}
 
 
-Continue description on [[javascript:click('.next-page')][next page]].
+Описанието продължава на [[javascript:click('.next-page')][следващата страница]].
 
-* Exercise: Equivalent Binary Trees
+* Упражнение: Еднакви двоични дървета
 
-*1.* Implement the `Walk` function.
+*1.* Напишете обхождащата функция `Walk`.
 
-*2.* Test the `Walk` function.
+*2.* Тествайте `Walk`.
 
-The function `tree.New(k)` constructs a randomly-structured binary tree holding the values `k`, `2k`, `3k`, ..., `10k`.
+Функцията `tree.New(k)` създава случайно построено двоично дърво, съдържащо стойностите `k`, `2k`, `3k`, ..., `10k`.
 
-Create a new channel `ch` and kick off the walker:
+Създайте нов канал `ch` и извикайте обхождащата функция:
 
 	go Walk(tree.New(1), ch)
 
-Then read and print 10 values from the channel. It should be the numbers 1, 2, 3, ..., 10.
+В нея прочетете и отпечатайте на екрана 10 стойности от канала. Числата трябва да са 1, 2, 3, ..., 10.
 
-*3.* Implement the `Same` function using `Walk` to determine whether `t1` and `t2` store the same values.
+*3.* Създайте функцията `Same` (Еднакви) като използвате `Walk` за да определите дали дърветата `t1` и `t2` съдържат еднакви стойности.
 
-*4.* Test the `Same` function.
+*4.* Тествайте функцията `Same`.
 
-`Same(tree.New(1),`tree.New(1))` should return true, and `Same(tree.New(1),`tree.New(2))` should return false.
+`Same(tree.New(1),`tree.New(1))` трябва да върне `true`, a `Same(tree.New(1),`tree.New(2))` трябва да върне `false`.
 
-The documentation for `Tree` can be found [[https://godoc.org/golang.org/x/tour/tree#Tree][here]].
+Документацията за `Tree` се намира [[https://godoc.org/golang.org/x/tour/tree#Tree][тук]].
 
 .play concurrency/exercise-equivalent-binary-trees.go
 
 * sync.Mutex
 
-We've seen how channels are great for communication among goroutines.
+Видяхме, че каналите са чудесен начин за общуване между нишки.
 
-But what if we don't need communication? What if we just want to make sure only
-one goroutine can access a variable at a time to avoid conflicts?
+Но ако не е нужно да обменяте данни, какво? Какво ще правим ако просто искаме да се уверим,
+че само една нишка може да променя стойността на дадена променлива във всеки един момент
+и по този начин да избегнем възможността за сблъсъци.
 
-This concept is called _mutual_exclusion_, and the conventional name for the data structure that provides it is _mutex_.
+Това понятие се нарича  _взаимно_изключване_ (_mutual_exclusion_), а името на структурата от данни,
+която предоставя тази възможност е _mutex_.
 
-Go's standard library provides mutual exclusion with
-[[https://golang.org/pkg/sync/#Mutex][`sync.Mutex`]] and its two methods:
+Стандартната библиотека на Go предоставя взаимно изключване чрез пакета
+[[https://golang.org/pkg/sync/#Mutex][`sync.Mutex`]] и двата му метода:
 
 - `Lock`
 - `Unlock`
 
-We can define a block of code to be executed in mutual exclusion by surrounding it
-with a call to `Lock` and `Unlock` as shown on the `Inc` method.
+Можем да определим коя част от програмния код да бъде изпълнена при условията на взаимно изключване
+като я оградим с извиквания на методите `Lock` и `Unlock` както е показано в метода `Inc`.
 
-We can also use `defer` to ensure the mutex will be unlocked as in the `Value` method.
+Също така можем да използваме `defer`, за да сме сигурни, че кодът ще бъде отключен в края на функцията,
+както се вижда в метода `Value`.
 
 .play concurrency/mutex-counter.go
 
-* Exercise: Web Crawler
+* Упражнение: Уеб-робот
 
-In this exercise you'll use Go's concurrency features to parallelize a web crawler.
+В това упражнение ще използваме възможностите за едновременно изпълнение на много задачи,
+за осъществяването на уеб-робот.
 
-Modify the `Crawl` function to fetch URLs in parallel without fetching the same URL twice.
+Променете функцията  `Crawl` да изтегля съдържанието на връзките едновременно без да посещава връзките два пъти.
 
-_Hint_: you can keep a cache of the URLs that have been fetched on a map, but maps alone are not
-safe for concurrent use!
+_Съвет_: можете да кеширате адресите, чието съдържание е вече изтеглено, в речник,
+но речниците сами по себе си не са надеждни при едновременно използване от няколко нишки!
 
 .play concurrency/exercise-web-crawler.go
 
-* Where to Go from here...
+* А сега накъде...
 
-#appengine: You can get started by
-#appengine: [[https://golang.org/dl/][installing Go]].
+#appengine: Можете да започнете с
+#appengine: [[https://golang.org/dl/][инсталиране на Go]].
 
-#appengine: Once you have Go installed, the
-The
-[[https://golang.org/doc/][Go Documentation]] is a great place to
-#appengine: continue.
-start.
-It contains references, tutorials, videos, and more.
+След като сте инсталирали Go, продължете с
+[[https://golang.org/doc/][Документацията на Go]].
 
-To learn how to organize and work with Go code, watch [[https://www.youtube.com/watch?v=XCsL89YtqCs][this screencast]] or read [[https://golang.org/doc/code.html][How to Write Go Code]].
+Тя съдържа справочници, урици, видео-уроци и др.
 
-If you need help with the standard library, see the [[https://golang.org/pkg/][package reference]]. For help with the language itself, you might be surprised to find the [[https://golang.org/ref/spec][Language Spec]] is quite readable.
+За да се научите как да работите с програамен код, написан на Go, гледайте [[https://www.youtube.com/watch?v=XCsL89YtqCs][това видео]] или прочете [[https://golang.org/doc/code.html][Как се пише код на Go]].
 
-To further explore Go's concurrency model, watch
+Ако се нуждаете от помощ за стандартната библиотека, вижте [[https://golang.org/pkg/][package reference]].
+Помощ за самия език ще намерите в [[https://golang.org/ref/spec][Спецификацията на езика]].
+С изненада ще установите, че е доста четима.
+
+За по задълбочени познания относно многозадачния модел на Go, гледайте
 [[https://www.youtube.com/watch?v=f6kdp27TYZs][Go Concurrency Patterns]]
-([[https://talks.golang.org/2012/concurrency.slide][slides]])
-and
+([[https://talks.golang.org/2012/concurrency.slide][представяне]])
+и
 [[https://www.youtube.com/watch?v=QDDwwePbDtw][Advanced Go Concurrency Patterns]]
-([[https://talks.golang.org/2013/advconc.slide][slides]])
-and read the
-[[https://golang.org/doc/codewalk/sharemem/][Share Memory by Communicating]]
-codewalk.
+([[https://talks.golang.org/2013/advconc.slide][представяне]]).
+Също прочетете разходката из кода
+[[https://golang.org/doc/codewalk/sharemem/][Share Memory by Communicating]].
 
-To get started writing web applications, watch
-[[https://vimeo.com/53221558][A simple programming environment]]
-([[https://talks.golang.org/2012/simple.slide][slides]])
-and read the
-[[https://golang.org/doc/articles/wiki/][Writing Web Applications]] tutorial.
+За да започнете да пишете уеб-приложения, изгледайте
+[[https://vimeo.com/53221558][Проста среда за програмиране]]
+([[https://talks.golang.org/2012/simple.slide][представяне]])
+и прочетете урока
+[[https://golang.org/doc/articles/wiki/][Писане на уеб-приложения]].
 
-The [[https://golang.org/doc/codewalk/functions/][First Class Functions in Go]] codewalk gives an interesting perspective on Go's function types.
+Прегледът на кода [[https://golang.org/doc/codewalk/functions/][Първокалсни функции в Go]]
+е интересна гледна точка за типовете на функциите в Go.
 
-The [[https://blog.golang.org/][Go Blog]] has a large archive of informative Go articles.
+[[https://blog.golang.org/][Блогът на Go Blog]] съдържа голям архив с полесни статии.
 
-Visit [[https://golang.org][golang.org]] for more.
+Посетете [[https://golang.org][golang.org]] за още.
 

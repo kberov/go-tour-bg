@@ -207,10 +207,10 @@ _Съвет_: можете да кеширате адресите, чието с
 [[https://www.youtube.com/watch?v=f6kdp27TYZs][Go Concurrency Patterns]]
 ([[https://talks.golang.org/2012/concurrency.slide][представяне]])
 и
-[[https://www.youtube.com/watch?v=QDDwwePbDtw][Advanced Go Concurrency Patterns]]
+[[https://www.youtube.com/watch?v=QDDwwePbDtw][Образци на едновременно изпълнение в Go за напреднали]]
 ([[https://talks.golang.org/2013/advconc.slide][представяне]]).
 Също прочетете разходката из кода
-[[https://golang.org/doc/codewalk/sharemem/][Share Memory by Communicating]].
+[[https://golang.org/doc/codewalk/sharemem/][Споделяйте памет чрез общуване]].
 
 За да започнете да пишете уеб-приложения, изгледайте
 [[https://vimeo.com/53221558][Проста среда за програмиране]]
@@ -218,10 +218,10 @@ _Съвет_: можете да кеширате адресите, чието с
 и прочетете урока
 [[https://golang.org/doc/articles/wiki/][Писане на уеб-приложения]].
 
-Прегледът на кода [[https://golang.org/doc/codewalk/functions/][Първокалсни функции в Go]]
+Прегледът на кода [[https://golang.org/doc/codewalk/functions/][Първокласни функции в Go]]
 е интересна гледна точка за типовете на функциите в Go.
 
-[[https://blog.golang.org/][Блогът на Go Blog]] съдържа голям архив с полесни статии.
+[[https://blog.golang.org/][Блогът на Go Blog]] съдържа голям архив с полезни статии.
 
 Посетете [[https://golang.org][golang.org]] за още.
 
